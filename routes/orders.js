@@ -1,9 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var Order = require('../models/order');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  Order.find()
+    .then(function (orders) {
+      res.render('orders/index', { orders});
+    });
 });
 
 module.exports = router;

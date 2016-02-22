@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+  .container
+    if(messages.length > 0)
+      .alert.alert-success(role='alert') !{success}
+        button.close(type='button', data-dismiss='alert', aria-label='Close')
+          span(aria-hidden='true') ×
+          each msg in messages
+            !{msg}
+            br
+    h2 Orders
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th Order ID
+          th Customer Name
+          th Phone Number
+          th Order Status
+          th Notification Status
+      tbody
+        each order in orders
+          tr
+            td
+              a(href="/order/#{order.id}") !{order.id} 
+            td !{order.customerName}
+            td !{order.customerPhoneNumber}
+            td !{order.status}
+            td !{order.notificationStatus} 
