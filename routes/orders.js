@@ -39,7 +39,6 @@ router.post('/:orderId/pickup', function(req, res, next) {
 router.post('/:orderId/deliver', function(req, res, next) {
 
   var id = req.params.orderId;
-  var host = req.headers.host;
 
   Order.findOne({_id: id })
     .then(function (order) {
@@ -52,9 +51,38 @@ router.post('/:orderId/deliver', function(req, res, next) {
     });
 });
 
+// POST: /orders/4/deliver
+router.post('/:orderId/deliver', function(req, res, next) {
+
+  var id = req.params.orderId;
+
+  Order.findOne({_id: id })
+    .then(function (order) {
+      order.status = 'Delivered';
+      order.notificationStatus = 'Queued';
+      order.save();
+
+      order.sendSmsNotification('Your clothes have been delivered', getCallbackUri(req) );
+      res.redirect(`/orders/${id}`);
+    });
+});
+
+// POST: /orders/4/status/update
+router.post('/:orderId/status/update', function(req, res, next) {
+
+  var id = req.params.orderId;
+  var notificationStatus = req.body.MessageStatus;
+
+  Order.findOne({_id: id })
+    .then(function (order) {
+      order.notificationStatus = notificationStatus.charAt(0).toUpperCase() + notificationStatus.slice(1);
+      order.save();
+    });
+});
+
 var getCallbackUri = function(req){
   var host = req.headers.host;
-  return `http://${host}/status`
-}
+  return `http://${host}/orders/${req.params.orderId}/status/update`
+};
 
 module.exports = router;
