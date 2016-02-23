@@ -16,11 +16,11 @@ block content
         include _notificationStatus
     .row
       .col-md-12.top-buffer
-        form(method='POST', action="/order/!{order.id}/pickup", accept-charset='UTF-8')
+        form(method='POST', action="/orders/#{order.id}/pickup", accept-charset='UTF-8')
           button.btn.btn.btn-info.full-width(type='submit') Pick up the package
     .row
       .col-md-12.top-buffer
-        form(method='POST', action="!/order/!{order.id}/deliver}", accept-charset='UTF-8')
+        form(method='POST', action="/orders/#{order.id}/deliver", accept-charset='UTF-8')
           button.btn.btn.btn-primary.full-width(type='submit') Deliver up the package
     .row
       .col-md-12.top-buffer
