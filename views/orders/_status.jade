@@ -1,5 +1,4 @@
 
 - var klass = (order.status === 'Ready' ? 'label-default' : order.status === 'Shipped' ? 'label-info' : 'label-success')
       
-span(class="label #{klass}")
-  !{order.status}
+span(class="label #{klass}") !{order.status}
