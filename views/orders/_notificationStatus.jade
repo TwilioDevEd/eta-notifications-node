@@ -1,0 +1,5 @@
+
+- var klass = (order.notificationStatus === 'Ready' ? 'label-default' : order.notificationStatus === 'Shipped' ? 'label-info' : 'label-success')
+  
+span(class="label #{klass}")
+  !{order.notificationStatus}
