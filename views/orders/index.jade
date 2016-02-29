@@ -1,29 +1,26 @@
 extends ../layout
 
+block title
+  | Orders
+
+
 block content
-  .container
-    if(messages.length > 0)
-      .alert.alert-success(role='alert') !{success}
-        button.close(type='button', data-dismiss='alert', aria-label='Close')
-          span(aria-hidden='true') ×
-          each msg in messages
-            !{msg}
-            br
-    h2 Orders
-    table.table.table-striped.table-hover
-      thead
-        tr
-          th Order ID
-          th Customer Name
-          th Phone Number
-          th Order Status
-          th Notification Status
-      tbody
-        each order in orders
-          tr
-            td
-              a(href="/orders/#{order.id}/show") !{order.id} 
-            td !{order.customerName}
-            td !{order.customerPhoneNumber}
-            td !{order.status}
-            td !{order.notificationStatus} 
+  .container-fluid
+    #order-index-header.row
+      .col-md-1.col-xs-1
+        span.order-index-title ORDERS
+      .col-md-10.col-xs-10.text-center
+        img#order-index-icon(src='/img/small-logo.png')
+    .row
+      .col-xs-12.no-padding
+        .list-group.list-special
+          each order in orders
+            a.list-group-item.list-special-item(href="/orders/#{order.id}/show")
+              .row
+                .col-xs-8.text-uppercase
+                  | !{order.customerName}
+                .col-xs-3.index-status.text-uppercase
+                  | !{order.status}
+                .col-xs-1
+                  i.fa.fa-caret-right
+      div

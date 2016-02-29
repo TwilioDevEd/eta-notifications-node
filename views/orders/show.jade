@@ -1,27 +1,69 @@
 extends ../layout
 
+
+block title
+  | Orders
+
 block content
-  .container
-    h2 !{ order.customerName }
+  //- .container
+  //-   h2 !{ order.customerName }
+  //-   .row
+  //-     .col-md-2.strong Phone Number:
+  //-     .col-md-10 !{ order.customerPhoneNumber }
+  //-   .row
+  //-     .col-md-2.strong Status:
+  //-     .col-md-10 
+  //-       include _status
+  //-   .row
+  //-     .col-md-2.strong Notification Status:
+  //-     .col-md-10 
+  //-       include _notificationStatus
+  //-   .row
+  //-     .col-md-12.top-buffer
+  //-       form(method='POST', action="/orders/#{order.id}/pickup", accept-charset='UTF-8')
+  //-         button.btn.btn.btn-info.full-width(type='submit') Pick up the package
+  //-   .row
+  //-     .col-md-12.top-buffer
+  //-       form(method='POST', action="/orders/#{order.id}/deliver", accept-charset='UTF-8')
+  //-         button.btn.btn.btn-primary.full-width(type='submit') Deliver the package
+  //-   .row
+  //-     .col-md-12.top-buffer
+  //-       a.fa.fa-arrow-left.fa-4x(href="/")
+        
+        
+  .container-fluid
+    #order-index-header.row
+      .col-md-4.col-xs-4
+        a(href="/orders")
+          i.fa.fa-caret-left.order-index-title
+          span.order-index-title BACK
+      .col-md-4.col-xs-4.text-center
+        img#order-index-icon(src='/img/small-logo.png')
     .row
-      .col-md-2.strong Phone Number:
-      .col-md-10 !{ order.customerPhoneNumber }
-    .row
-      .col-md-2.strong Status:
-      .col-md-10 
-        include _status
-    .row
-      .col-md-2.strong Notification Status:
-      .col-md-10 
-        include _notificationStatus
-    .row
-      .col-md-12.top-buffer
+      #house-image.col-md-7.col-xs-7.no-padding
+        p#customer-name-p !{order.customerName }
+      #location-image.col-md-5.col-xs-5.no-padding
+    #show-info-row.row
+      .col-xs-6.no-padding
+        | Status: 
+        span.index-status.text-uppercase !{order.status}
+      .col-xs-6.no-padding
+        | Notification: 
+        span.index-status.text-uppercase !{order.notificationStatus}
+    .row.show-button-row
+      .col-xs-12.text-center
         form(method='POST', action="/orders/#{order.id}/pickup", accept-charset='UTF-8')
-          button.btn.btn.btn-info.full-width(type='submit') Pick up the package
-    .row
-      .col-md-12.top-buffer
+          button.btn.show-button(type='submit')
+            .col-xs-3.text-center
+              img#order-index-icon(src='/img/small-logo.png')
+            .col-xs-6.text-center
+              | PICK-UP
+          
+    .row.show-button-row
+      .col-xs-12.text-center
         form(method='POST', action="/orders/#{order.id}/deliver", accept-charset='UTF-8')
-          button.btn.btn.btn-primary.full-width(type='submit') Deliver the package
-    .row
-      .col-md-12.top-buffer
-        a.fa.fa-arrow-left.fa-4x(href="/")
+          button.btn.show-button(type='submit')
+            .col-xs-6.col-xs-offset-3.text-center
+              | DELIVER
+            .col-xs-3.text-center
+              i.fa.fa-bicycle

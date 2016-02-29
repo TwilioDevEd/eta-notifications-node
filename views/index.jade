@@ -1,5 +1,15 @@
 extends layout
 
+block title
+  | Home
+  
 block content
-  h1= title
-  p Welcome to #{title}
+  .full-screen-home
+  .container-fluid
+    #icon-row.row
+      .col-xs-12.text-center
+        img#home-icon(src='/img/laundry-logo.png')
+    #view-orders-row.row
+      .col-xs-12.text-center
+        a(href="/orders")
+          p#view-orders-button.btn VIEW ORDERS
