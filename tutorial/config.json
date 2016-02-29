@@ -1,0 +1,6 @@
+{
+    "title": "ETA Notifications",
+    "repo": "TwilioDevEd/eta-notifications-node",
+    "description": "In this tutorial, we will learn how to implement ETA Notifications using Node.js/Express and Twilio",
+    "heroku": false
+}
