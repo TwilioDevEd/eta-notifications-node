@@ -61,7 +61,7 @@ router.post('/:orderId/status/update', function(req, res, next) {
     });
 });
 
-var getCallbackUri = function(req){
+function getCallbackUri (req){
   var host = req.headers.host;
   return `http://${host}/orders/${req.params.orderId}/status/update`
 };
