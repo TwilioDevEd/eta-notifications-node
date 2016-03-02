@@ -1,7 +1,5 @@
 .chapter(data-title='Setting Up The Application')
-  .step(
-    data-title='What Are We Building?',
-    data-file='app.js')
+  .step(data-title='What Are We Building?', data-file='app.js')
     :markdown
       ## Eta Notifications - Laundry On-Demand
 
@@ -10,11 +8,11 @@
       There are a wide range of businesses that deliver goods or services to
       their customers on-demand. Companies like Uber, TaskRabbit, and
       Instacart have built an entire industry around the fact that we, the
-      customer, like to order things instantly, wherever we are. The key to
-      those services working is notifying customers instantly when things
+      customer, like to order things instantly wherever we are. The key that
+      make those services work is to be able to notify customers instantly when things
       change.
 
-      In this tutorial, we'll build a notification system for Laundr.io, an
+      On this tutorial we'll build a notification system for Laundr.io an
       on-demand laundry service.
 
       Let's get started!
@@ -24,34 +22,27 @@
       * [Twilio Node.js Module Introduction](//www.twilio.com/blog/2013/03/introducing-the-twilio-module-for-node-js.html)
       * [Twilio Node.js Helper Library](//www.twilio.com/docs/node/install)
       * [Getting started with Express](//expressjs.com/en/starter/installing.html)
-      
 
-
-  .step(data-title="Customer's notifications",
-    data-file='routes/orders.js'
-    data-highlight='22-38')
+  .step(data-title="Customer's notifications", data-file='routes/orders.js', data-highlight='22-38')
     :markdown
       ## Trigger the Notifications
 
       This screen shows two buttons that allow the laundry delivery person to
-      trigger notifications. There are two cases we'd like to handle:
+      trigger notifications. There are two possibilities for this:
 
       1. Delivery person picks up laundry to be delivered.
 
-      2. Delivery person is arriving to the customer's house.
+      2. Delivery person arrived to the customer's house.
 
-      In a production app we would probably trigger the second notification
-      when the delivery person was physically near the customer, using GPS. In
+      On a production app we would probably trigger the second notification
+      when the delivery person was physically near the customer using GPS. In
       this case we'll just use a button.
 
-      Now, on the server we're going to use the Twilio API Client to actually
+      On the server we're going to use the Twilio API Client to actually
       send out the notifications.
-      
-      
-  .step(
-    data-title='Setting Up the Twilio REST Client',
-    data-file='models/order.js',
-    data-highlight='14')
+
+
+  .step(data-title='Setting Up the Twilio REST Client', data-file='models/order.js', data-highlight='14')
     :markdown
       ## Setting Up the Twilio REST Client
 
@@ -66,25 +57,19 @@
       **See Also:**
       * [Twilio SMS and MMS Quickstart](//www.twilio.com/docs/quickstart/ruby/sms/sending-via-rest)
 
-  .step(
-    data-title='Handling the Notification Trigger',
-    data-file='routes/orders.js',
-    data-highlight='33, 49')
+  .step(data-title='Handling the Notification Trigger', data-file='routes/orders.js', data-highlight='33, 49')
     :markdown
       ## Handling the Notification Trigger
 
       This code handles the HTTP `POST` request triggered by the delivery
-      person. It uses the `sendSmsNotification` method of our `Order` model 
+      person. It uses the `sendSmsNotification` method of our `Order` model
       to send an SMS message to the
-      customer's phone number, which we have registered in our database.
+      customer's phone number (which we have registered in our database).
 
       Next let's look closer at how we send the SMS.
 
-      
-  .step(
-    data-title='Sending the Message',
-    data-file='models/order.js',
-    data-highlight='16-32')
+
+  .step(data-title='Sending the Message', data-file='models/order.js', data-highlight='16-32')
     :markdown
       ## Sending the Message
 
@@ -106,15 +91,15 @@
     :markdown
       ## Handling the Twilio Callback
 
-      Twilio will make a post request to this controller, each time our message
+      Twilio will make a post request to this controller each time our message
       status changes to one of the following: queued, failed, sent, delivered, or
       undelivered.
 
-      We then update this `notificationStatus` on the order so that we can decide
+      We then update this `notificationStatus` on the order so that we decide
       what to do next with the order. This is a great place to add logic that would
       resend the message or send out an
       [automated survey](//www.twilio.com/docs/tutorials/walkthrough/automated-survey/node/express).
-      
+
       ---
       **See Also:**
       * [Message Status](//www.twilio.com/docs/api/rest/sending-messages#status-callback-parameter-request-parameters)
@@ -124,15 +109,15 @@
       **See Also:**
       * [Message Status Parameter](//www.twilio.com/docs/api/rest/sending-messages#status-callback-parameter-request-parameters)
       * [Message Status Values](//www.twilio.com/docs/api/rest/message#sms-status-values)
-  
+
   .step
     :markdown
       ## Where to next?
 
       That's it! We've just implemented an on-demand notification service that
       alerts our customers when they're order is arriving.
-      
-      If you are a PHP developer working with Twilio,  you might want
+
+      If you are a Node developer working with Twilio,  you might want
       to check out these other tutorials:
 
       [**Workflow Automation**](//www.twilio.com/docs/tutorials/walkthrough/workflow-automation/node/express)
@@ -152,4 +137,3 @@
       Thanks for checking out this tutorial! If you have any feedback to share
       with us, we'd love to hear it. Tweet
       [@twilio](http://twitter.com/twilio) to let us know what you think.
-  

@@ -14,10 +14,10 @@
 <p>There are a wide range of businesses that deliver goods or services to
 their customers on-demand. Companies like Uber, TaskRabbit, and
 Instacart have built an entire industry around the fact that we, the
-customer, like to order things instantly, wherever we are. The key to
-those services working is notifying customers instantly when things
+customer, like to order things instantly wherever we are. The key that
+make those services work is to be able to notify customers instantly when things
 change.</p>
-<p>In this tutorial, we&#39;ll build a notification system for Laundr.io, an
+<p>On this tutorial we&#39;ll build a notification system for Laundr.io an
 on-demand laundry service.</p>
 <h2 id="let-s-get-started-">Let&#39;s get started!</h2>
 <p><strong>See Also:</strong></p>
@@ -28,17 +28,17 @@ on-demand laundry service.</p>
 </ul>
 </div><div data-title="Customer's notifications" data-file="routes/orders.js" data-highlight="22-38" class="step"><h2 id="trigger-the-notifications">Trigger the Notifications</h2>
 <p>This screen shows two buttons that allow the laundry delivery person to
-trigger notifications. There are two cases we&#39;d like to handle:</p>
+trigger notifications. There are two possibilities for this:</p>
 <ol>
 <li><p>Delivery person picks up laundry to be delivered.</p>
 </li>
-<li><p>Delivery person is arriving to the customer&#39;s house.</p>
+<li><p>Delivery person arrived to the customer&#39;s house.</p>
 </li>
 </ol>
-<p>In a production app we would probably trigger the second notification
-when the delivery person was physically near the customer, using GPS. In
+<p>On a production app we would probably trigger the second notification
+when the delivery person was physically near the customer using GPS. In
 this case we&#39;ll just use a button.</p>
-<p>Now, on the server we&#39;re going to use the Twilio API Client to actually
+<p>On the server we&#39;re going to use the Twilio API Client to actually
 send out the notifications.</p>
 </div><div data-title="Setting Up the Twilio REST Client" data-file="models/order.js" data-highlight="14" class="step"><h2 id="setting-up-the-twilio-rest-client">Setting Up the Twilio REST Client</h2>
 <p>Here we create a Twilio REST API
@@ -53,9 +53,9 @@ as environment variables.</p>
 </ul>
 </div><div data-title="Handling the Notification Trigger" data-file="routes/orders.js" data-highlight="33, 49" class="step"><h2 id="handling-the-notification-trigger">Handling the Notification Trigger</h2>
 <p>This code handles the HTTP <code>POST</code> request triggered by the delivery
-person. It uses the <code>sendSmsNotification</code> method of our <code>Order</code> model 
+person. It uses the <code>sendSmsNotification</code> method of our <code>Order</code> model
 to send an SMS message to the
-customer&#39;s phone number, which we have registered in our database.</p>
+customer&#39;s phone number (which we have registered in our database).</p>
 <p>Next let&#39;s look closer at how we send the SMS.</p>
 </div><div data-title="Sending the Message" data-file="models/order.js" data-highlight="16-32" class="step"><h2 id="sending-the-message">Sending the Message</h2>
 <p>Here is the method that actually sends the sms. If we want to improve
@@ -65,10 +65,10 @@ the message we can send a picture of the laundry by adding:</p>
 url to let us know if the message was delivered. Let&#39;s take a closer
 look at how this works.</p>
 </div><div data-title="Handling the Twilio Callback" data-file="routes/orders.js" data-highlight="55-67" class="step"><h2 id="handling-the-twilio-callback">Handling the Twilio Callback</h2>
-<p>Twilio will make a post request to this controller, each time our message
+<p>Twilio will make a post request to this controller each time our message
 status changes to one of the following: queued, failed, sent, delivered, or
 undelivered.</p>
-<p>We then update this <code>notificationStatus</code> on the order so that we can decide
+<p>We then update this <code>notificationStatus</code> on the order so that we decide
 what to do next with the order. This is a great place to add logic that would
 resend the message or send out an
 <a href="//www.twilio.com/docs/tutorials/walkthrough/automated-survey/node/express">automated survey</a>.</p>
@@ -86,7 +86,7 @@ resend the message or send out an
 </div><div class="step"><h2 id="where-to-next-">Where to next?</h2>
 <p>That&#39;s it! We&#39;ve just implemented an on-demand notification service that
 alerts our customers when they&#39;re order is arriving.</p>
-<p>If you are a PHP developer working with Twilio,  you might want
+<p>If you are a Node developer working with Twilio,  you might want
 to check out these other tutorials:</p>
 <p><a href="//www.twilio.com/docs/tutorials/walkthrough/workflow-automation/node/express"><strong>Workflow Automation</strong></a></p>
 <p>Increase your rate of response by automating the workflows that are key
