@@ -23,11 +23,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({
-    secret: 'secret',
-    name: 'browser-calls',
-    cookie: { maxAge: 60000 },
-    resave: true,
-    saveUninitialized: true
+  secret: 'secret',
+  name: 'browser-calls',
+  cookie: { maxAge: 60000 },
+  resave: true,
+  saveUninitialized: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -35,8 +35,8 @@ app.use(flash());
 
 // middleware for flash message handling
 app.use(function(req, res, next){
-    res.locals.messages = req.flash('messages');
-    next();
+  res.locals.messages = req.flash('messages');
+  next();
 });
 
 app.use('/', index);

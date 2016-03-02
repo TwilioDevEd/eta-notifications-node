@@ -14,21 +14,21 @@ OrderSchema.methods.sendSmsNotification = function (message, statusCallback , ca
   var client = new twilio.RestClient(cfg.twilioAccountSid, cfg.twilioAuthToken);
   var self = this;
   var options = {
-      to:  self.customerPhoneNumber,
-      from: cfg.twilioPhoneNumber,
-      body: message,
-      statusCallback: statusCallback
+    to:  self.customerPhoneNumber,
+    from: cfg.twilioPhoneNumber,
+    body: message,
+    statusCallback: statusCallback
   };
 
   client.sendMessage(options, function(err, response) {
-      if (err) {
-          console.error(err);
-      } else {
-          var masked = self.customerPhoneNumber.substr(0,
-            self.customerPhoneNumber.length - 5);
-          masked += '*****';
-          console.log('Message sent to ' + masked);
-      }
+    if (err) {
+        console.error(err);
+    } else {
+      var masked = self.customerPhoneNumber.substr(0,
+        self.customerPhoneNumber.length - 5);
+      masked += '*****';
+      console.log('Message sent to ' + masked);
+    }
   });
 
   if (callback) {
