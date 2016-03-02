@@ -52,8 +52,7 @@ describe('order', function () {
       agent
         .post(`/orders/${order.id}/pickup`)
         .expect(function(response) {
-          Order
-            .findOne({_id: order.id})
+          Order.findOne({_id: order.id})
             .then(function (order) {
               expect(order.status).to.contain('Shipped');
             });
@@ -67,8 +66,7 @@ describe('order', function () {
       agent
         .post(`/orders/${order.id}/deliver`)
         .expect(function(response) {
-          Order
-            .findOne({_id: order.id})
+          Order.findOne({_id: order.id})
             .then(function (order) {
               expect(order.status).to.contain('Delivered');
             });
@@ -86,8 +84,7 @@ describe('order', function () {
           MessageStatus: 'sent',
         })
         .expect(function(response) {
-          Order
-            .findOne({_id: order.id})
+          Order.findOne({_id: order.id})
             .then(function (order) {
               expect(order.notificationStatus).to.contain('Sent');
             });
