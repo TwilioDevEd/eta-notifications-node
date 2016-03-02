@@ -26,8 +26,6 @@ describe('order', function () {
         .expect(function (response) {
           expect(response.text).to.contain('Vincent Vega');
           expect(response.text).to.contain('Mia Wallace');
-          expect(response.text).to.contain('+17654532001');
-          expect(response.text).to.contain('+17654532002');
         })
         .expect(200, done);
     });
@@ -39,7 +37,6 @@ describe('order', function () {
         .get(`/orders/${order.id}/show`)
         .expect(function (response) {
           expect(response.text).to.contain(order.customerName);
-          expect(response.text).to.contain(order.customerPhoneNumber);
           expect(response.text).to.contain(order.status);
           expect(response.text).to.contain(order.notificationStatus);
         })
