@@ -38,18 +38,11 @@ ETA notifications implementation with Node.js/Express and Twilio.
     $ npm install
     ```
 
-1. Edit the sample environments file
+1. Copy the sample configuration file and edit it to match your configuration.Remember to set your MongoDB connection strings for both environments.
 
-   Edit the `.env` file to match your configuration. Remember to set your MongoDB connection strings for both environments.
-
-   ```
-   export TWILIO_ACCOUNT_SID=Your-Account-SID
-   export TWILIO_AUTH_TOKEN=Your-Twilio-Auth-Token
-   export TWILIO_PHONE_NUMBER=Your-Twilio-Phone-Number
-   export MONGO_URL=Mongo-Url
-   export MONGO_URL_TEST=Mongo-Url-Test
-
-   ```
+  ```bash
+  $ cp .env.sample .env
+  ```
 
   You can find your `TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN` in your
   [Twilio Account Settings](https://www.twilio.com/user/account/settings).
@@ -66,7 +59,7 @@ ETA notifications implementation with Node.js/Express and Twilio.
     $ npm start
     ```
 
-1. Expose the application to the wider Internet using [ngrok](https://ngrok.com/)
+1. Expose the application to the wider Internet. [We recommend using ngrok to solve this problem](https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html)
 
     ```bash
     $ ngrok http 3000
