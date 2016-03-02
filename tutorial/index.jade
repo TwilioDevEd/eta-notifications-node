@@ -3,8 +3,7 @@
     data-title='What Are We Building?',
     data-file='app.js')
     :markdown
-      ## Eta Notifications
-      ## Laundry On-Demand
+      ## Eta Notifications - Laundry On-Demand
 
       ![ETA Notifications](http://howtodocs.s3.amazonaws.com/eta-notifications.png)
 
@@ -19,18 +18,18 @@
       on-demand laundry service.
 
       Let's get started!
-
       ---
 
       **See Also:**
       * [Twilio Node.js Module Introduction](//www.twilio.com/blog/2013/03/introducing-the-twilio-module-for-node-js.html)
       * [Twilio Node.js Helper Library](//www.twilio.com/docs/node/install)
+      * [Getting started with Express](//expressjs.com/en/starter/installing.html)
       
 
 
   .step(data-title="Customer's notifications",
     data-file='routes/orders.js'
-    data-highlight='20-38')
+    data-highlight='22-38')
     :markdown
       ## Trigger the Notifications
 
@@ -38,6 +37,7 @@
       trigger notifications. There are two cases we'd like to handle:
 
       1. Delivery person picks up laundry to be delivered.
+
       2. Delivery person is arriving to the customer's house.
 
       In a production app we would probably trigger the second notification
@@ -64,7 +64,7 @@
       ---
 
       **See Also:**
-      * [Twilio Rest Client - Send SMS](//www.twilio.com/docs/quickstart/php/sms/sending-via-rest)
+      * [Twilio SMS and MMS Quickstart](//www.twilio.com/docs/quickstart/ruby/sms/sending-via-rest)
 
   .step(
     data-title='Handling the Notification Trigger',
@@ -73,28 +73,31 @@
     :markdown
       ## Handling the Notification Trigger
 
-      In `orders` controller we extract the phone number stored in each order,
-      and then simply send an SMS message with the specified body.
+      This code handles the HTTP `POST` request triggered by the delivery
+      person. It uses the `sendSmsNotification` method of our `Order` model 
+      to send an SMS message to the
+      customer's phone number, which we have registered in our database.
 
       Next let's look closer at how we send the SMS.
+
       
   .step(
-      data-title='Sending the Message',
-      data-file='models/order.js',
-      data-highlight='16-32')
-      :markdown
-        ## Sending the Message
+    data-title='Sending the Message',
+    data-file='models/order.js',
+    data-highlight='16-32')
+    :markdown
+      ## Sending the Message
 
-        Here is the method that actually sends the sms. If we want to improve
-        the message we can send a picture of the laundry by adding:
+      Here is the method that actually sends the sms. If we want to improve
+      the message we can send a picture of the laundry by adding:
 
-        ```
-        'mediaUrl' : 'http://lorempixel.com/image_output/fashion-q-c-640-480-1.jpg'
-        ```
+      ```
+      'mediaUrl' : 'http://lorempixel.com/image_output/fashion-q-c-640-480-1.jpg'
+      ```
 
-        In addition to the required parameters, we can pass a `statusCallback`
-        url to let us know if the message was delivered. Let's take a closer
-        look at how this works.
+      In addition to the required parameters, we can pass a `statusCallback`
+      url to let us know if the message was delivered. Let's take a closer
+      look at how this works.
 
   .step(
     data-title='Handling the Twilio Callback',
@@ -111,6 +114,11 @@
       what to do next with the order. This is a great place to add logic that would
       resend the message or send out an
       [automated survey](//www.twilio.com/docs/tutorials/walkthrough/automated-survey/node/express).
+      
+      ---
+      **See Also:**
+      * [Message Status](//www.twilio.com/docs/api/rest/sending-messages#status-callback-parameter-request-parameters)
+
 
       ---
       **See Also:**
