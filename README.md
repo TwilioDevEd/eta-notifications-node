@@ -41,7 +41,7 @@ ETA notifications implementation with Node.js/Express and Twilio.
 1. Copy the sample configuration file and edit it to match your configuration.Remember to set your MongoDB connection strings for both environments.
 
   ```bash
-  $ cp .env.sample .env
+  $ cp .env.example .env
   ```
 
   You can find your `TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN` in your
