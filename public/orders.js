@@ -19,9 +19,7 @@ router.get('/:id/show', function(req, res, next) {
 
 // POST: /orders/4/pickup
 router.post('/:orderId/pickup', function(req, res, next) {
-
   var id = req.params.orderId;
-
   Order.findOne({_id: id }).then(function (order) {
     order.status = 'Shipped';
     order.notificationStatus = 'Queued';
@@ -34,9 +32,7 @@ router.post('/:orderId/pickup', function(req, res, next) {
 
 // POST: /orders/4/deliver
 router.post('/:orderId/deliver', function(req, res, next) {
-
   var id = req.params.orderId;
-
   Order.findOne({_id: id }).then(function (order) {
     order.status = 'Delivered';
     order.notificationStatus = 'Queued';
@@ -50,10 +46,8 @@ router.post('/:orderId/deliver', function(req, res, next) {
 
 // POST: /orders/4/status/update
 router.post('/:orderId/status/update', function(req, res, next) {
-
   var id = req.params.orderId;
   var notificationStatus = req.body.MessageStatus;
-
   Order.findOne({_id: id }).then(function (order) {
     order.notificationStatus = notificationStatus.charAt(0).toUpperCase() + notificationStatus.slice(1);
     order.save();

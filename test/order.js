@@ -12,8 +12,10 @@ describe('order', function () {
   beforeEach(function(done) {
     Order.collection.remove();
     var orders = [
-      { customerName: 'Vincent Vega',   customerPhoneNumber: '+17654532001',  status : 'Ready', notificationStatus : 'None' },
-      { customerName: 'Mia Wallace',   customerPhoneNumber: '+17654532002' , status : 'Ready', notificationStatus : 'None'  },
+      { customerName: 'Vincent Vega', customerPhoneNumber: '+17654532001',
+        status : 'Ready', notificationStatus : 'None' },
+      { customerName: 'Mia Wallace', customerPhoneNumber: '+17654532002',
+        status : 'Ready', notificationStatus : 'None'  },
     ];
     Order.collection.insert(orders);
     Order.findOne().then(function(ord){ order = ord;done();});
