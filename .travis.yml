@@ -1,15 +1,18 @@
-
 language: node_js
+
 node_js:
-- 'stable'
-- '5.0.0'
-- '4.0.0'
-install:
-- npm install
+  - 'stable'
+  - '4.4'
+
 services: mongodb
+
 env:
   global:
-    - export TWILIO_ACCOUNT_SID=AC2XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    - export TWILIO_AUTH_TOKEN=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    - export TWILIO_NUMBER=+15551230987
-    - export MONGO_URL_TEST=mongodb://localhost/appointment-reminders-node-test
+    - TWILIO_ACCOUNT_SID=AC2XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    - TWILIO_AUTH_TOKEN=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    - TWILIO_NUMBER=+15551230987
+    - MONGO_URL_TEST=mongodb://localhost/appointment-reminders-node-test
+
+cache:
+  directories:
+    - node_modules

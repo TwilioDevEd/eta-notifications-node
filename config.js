@@ -1,4 +1,4 @@
-
+require('dotenv-safe').load();
 var cfg = {};
 var defaultMongoUrl = 'mongodb://localhost/eta-notifications-node';
 var defaultMongoUrlTest = 'mongodb://localhost/eta-notifications-node-test';
@@ -24,7 +24,7 @@ cfg.twilioAuthToken = process.env.TWILIO_AUTH_TOKEN;
 cfg.twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER;
 
 // MongoDB connection string - MONGO_URL is for local dev,
-cfg.mongoUrl = process.env.MONGO_URL || defaultMongoUrl ;
+cfg.mongoUrl = process.env.MONGO_URL || defaultMongoUrl;
 cfg.mongoUrlTest = process.env.MONGO_URL_TEST || defaultMongoUrlTest;
 
 // Export configuration object
