@@ -29,3 +29,8 @@ cfg.mongoUrlTest = process.env.MONGO_URL_TEST || defaultMongoUrlTest;
 
 // Export configuration object
 module.exports = cfg;
+
+
+if (!cfg.twilioAccountSid || !cfg.twilioAuthToken) {
+  throw new Error('TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN must be set!.');
+};
