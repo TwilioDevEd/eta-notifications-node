@@ -14,6 +14,7 @@ env:
     - TWILIO_AUTH_TOKEN=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     - TWILIO_NUMBER=+15551230987
     - MONGO_URL_TEST=mongodb://localhost/appointment-reminders-node-test
+    - MONGO_URL=mongodb://localhost/appointment-reminders-node-test
 
 cache:
   directories:
