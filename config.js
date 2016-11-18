@@ -1,4 +1,4 @@
-
+require('dotenv-safe').load();
 var cfg = {};
 var defaultMongoUrl = 'mongodb://localhost/eta-notifications-node';
 var defaultMongoUrlTest = 'mongodb://localhost/eta-notifications-node-test';
@@ -21,7 +21,7 @@ cfg.twilioAuthToken = process.env.TWILIO_AUTH_TOKEN;
 
 // A Twilio number you control - choose one from:
 // Specify in E.164 format, e.g. "+16519998877"
-cfg.twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER;
+cfg.twilioPhoneNumber = process.env.TWILIO_NUMBER;
 
 // MongoDB connection string - MONGO_URL is for local dev,
 cfg.mongoUrl = process.env.MONGO_URL || defaultMongoUrl;
@@ -29,8 +29,3 @@ cfg.mongoUrlTest = process.env.MONGO_URL_TEST || defaultMongoUrlTest;
 
 // Export configuration object
 module.exports = cfg;
-
-
-if (!cfg.twilioAccountSid || !cfg.twilioAuthToken) {
-  throw new Error('TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN must be set!.');
-};
