@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var cfg = require('../config');
+var config = require('../config');
 var twilio = require('twilio');
 
 
@@ -16,7 +16,7 @@ OrderSchema.methods.sendSmsNotification = function(message, statusCallback, call
   var self = this;
   var options = {
     to: self.customerPhoneNumber,
-    from: cfg.twilioPhoneNumber,
+    from: config.twilioPhoneNumber,
     body: message,
     statusCallback: statusCallback,
   };
