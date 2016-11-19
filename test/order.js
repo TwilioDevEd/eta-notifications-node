@@ -17,7 +17,7 @@ describe('order', function() {
         status: 'Ready', notificationStatus: 'None'},
     ];
     Order.collection.insert(orders);
-    Order.findOne().then(function(ord){
+    Order.findOne().then(function(ord) {
         order = ord;
         done();
     });
