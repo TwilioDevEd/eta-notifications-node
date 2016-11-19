@@ -76,7 +76,7 @@ describe('order', function() {
     });
   });
 
-  describe('POST /orders/:id/status/update', function () {
+  describe('POST /orders/:id/status/update', function() {
     it('changes the notification status of an order to Sent(capitalized)', function(done) {
       agent
         .post(`/orders/${order.id}/status/update`)
