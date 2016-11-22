@@ -6,13 +6,6 @@ node_js:
 
 services: mongodb
 
-env:
-  global:
-    - TWILIO_ACCOUNT_SID=AC2XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    - TWILIO_AUTH_TOKEN=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    - TWILIO_NUMBER=+15551230987
-    - MONGO_URL_TEST=mongodb://localhost/appointment-reminders-node-test
-
 cache:
   directories:
     - node_modules
