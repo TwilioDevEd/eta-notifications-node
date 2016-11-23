@@ -1,3 +1,5 @@
+require('dotenv-safe').load();
+
 // Fallback values
 var defaultMongoUrl = 'mongodb://localhost:27017/eta-notifications-node';
 var defaultMongoUrlTest = 'mongodb://localhost/eta-notifications-node-test';
@@ -17,10 +19,8 @@ module.exports = {
 
   // A Twilio number you control - choose one from:
   // Specify in E.164 format, e.g. "+16519998877"
-  twilioPhoneNumber: process.env.TWILIO_PHONE_NUMBER,
+  twilioPhoneNumber: process.env.TWILIO_NUMBER,
 
   // MongoDB connection string - MONGO_URL is for local dev,
   mongoUri: process.env.MONGO_URI,
-  mongoUriTest: process.env.MONGO_URI_TEST,
 };
-
