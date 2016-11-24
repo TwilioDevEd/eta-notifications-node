@@ -3,7 +3,7 @@ var expect = require('chai').expect;
 var supertest = require('supertest');
 var app = require('../app.js');
 var Order = require('../models/order');
-var agent = supertest(app);
+var agent = supertest.agent(app);
 var nock = require('nock');
 
 function createMessageRequest() {
@@ -87,11 +87,11 @@ describe('order', function() {
       return agent
         .post(`/orders/${order._id}/pickup`)
         .expect(302)
-        .expect(function(response) {
-          Order.findOne({_id: order._id})
-            .then(function(order) {
-              expect(order.status).to.contain('Shipped');
-            })
+        .then(function(response) {
+          return Order.findOne({_id: order._id});
+        })
+        .then(function(order) {
+          return expect(order.status).to.contain('Shipped');
         });
     });
   });
@@ -101,11 +101,11 @@ describe('order', function() {
       return agent
         .post(`/orders/${order._id}/deliver`)
         .expect(302)
-        .expect(function(response) {
-          Order.findOne({_id: order._id})
-            .then(function(order) {
-              expect(order.status).to.contain('Delivered');
-            });
+        .then(function(response) {
+          return Order.findOne({_id: order._id});
+        })
+        .then(function(order) {
+          return expect(order.status).to.contain('Delivered');
         });
     });
   });
@@ -119,11 +119,11 @@ describe('order', function() {
           MessageStatus: 'sent',
         })
         .expect(200)
-        .expect(function(response) {
-          return Order.findOne({_id: order._id})
-            .then(function(order) {
-              expect(order.notificationStatus).to.contain('Sent');
-            });
+        .then(function(response) {
+          return Order.findOne({_id: order._id});
+        })
+        .then(function(order) {
+          return expect(order.notificationStatus).to.contain('Sent');
         });
     });
   });
