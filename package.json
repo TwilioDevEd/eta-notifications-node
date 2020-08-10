@@ -39,7 +39,7 @@
     "express-session": "^1.14.2",
     "jade": "~1.11.0",
     "mongo-migrate": "^0.1.0",
-    "mongoose": "^4.6.8",
+    "mongoose": "^5.9.28",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0",
     "twilio": "~3.0.0-rc.16"
