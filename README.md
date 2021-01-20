@@ -15,8 +15,11 @@ ETA notifications implementation with Node.js/Express and Twilio.
    On OS X, the easiest way to get MongoDB running locally is to install it via [Homebrew](http://brew.sh/).
 
    ```bash
-   $ brew install mongodb
+   $ brew tap mongodb/brew
+   $ brew install mongodb-community
    ```
+
+   Check out the [official documentation on installing MongoDB](https://docs.mongodb.com/manual/installation/) for more details on your platform.
 
    You should then be able to run a local server with:
 
@@ -38,7 +41,7 @@ ETA notifications implementation with Node.js/Express and Twilio.
     $ npm install
     ```
 
-1. Copy the sample configuration file and edit it to match your configuration.Remember to set your MongoDB connection strings for both environments.
+2. Copy the sample configuration file and edit it to match your configuration.
 
   ```bash
   $ cp .env.example .env
