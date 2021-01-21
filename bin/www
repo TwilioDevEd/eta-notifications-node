@@ -91,5 +91,8 @@ function onListening() {
   debug('Listening on ' + bind);
 }
 
-mongoose.connect(cfg.mongoUri);
+mongoose.connect(cfg.mongoUri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 mongoose.Promise = require('bluebird');

@@ -47,8 +47,8 @@ describe('order', function() {
   beforeEach(function(done) {
     createMessageRequest();
 
-    Order.remove().then(function() {
-      return Order.collection.insert(orders);
+    Order.deleteMany().then(function() {
+      return Order.collection.insertMany(orders);
     }).then(function() {
       return Order.findOne();
     }).then(function(ord) {

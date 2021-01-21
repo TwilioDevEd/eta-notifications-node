@@ -1,4 +1,4 @@
-require('dotenv-safe').load();
+require('dotenv-safe').config();
 
 module.exports = {
   // HTTP Port to run our web application
