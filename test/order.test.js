@@ -1,10 +1,10 @@
 require('./connectionHelper');
-var expect = require('chai').expect;
-var supertest = require('supertest');
-var app = require('../app.js');
-var Order = require('../models/order');
-var agent = supertest.agent(app);
-var nock = require('nock');
+const expect = require('chai').expect;
+const supertest = require('supertest');
+const app = require('../app.js');
+const Order = require('../models/order');
+const agent = supertest.agent(app);
+const nock = require('nock');
 
 function createMessageRequest() {
   return nock('https://api.twilio.com')
@@ -36,8 +36,8 @@ function createMessageRequest() {
 }
 
 describe('order', function() {
-  var order = {};
-  var orders = [
+  let order = {};
+  const orders = [
     {customerName: 'Vincent Vega', customerPhoneNumber: '+17654532001',
      status: 'Ready', notificationStatus: 'None'},
     {customerName: 'Mia Wallace', customerPhoneNumber: '+17654532002',
@@ -87,7 +87,7 @@ describe('order', function() {
       return agent
         .post(`/orders/${order._id}/pickup`)
         .expect(302)
-        .then(function(response) {
+        .then(function() {
           return Order.findOne({_id: order._id});
         })
         .then(function(order) {
@@ -101,7 +101,7 @@ describe('order', function() {
       return agent
         .post(`/orders/${order._id}/deliver`)
         .expect(302)
-        .then(function(response) {
+        .then(function() {
           return Order.findOne({_id: order._id});
         })
         .then(function(order) {
@@ -119,7 +119,7 @@ describe('order', function() {
           MessageStatus: 'sent',
         })
         .expect(200)
-        .then(function(response) {
+        .then(function() {
           return Order.findOne({_id: order._id});
         })
         .then(function(order) {
