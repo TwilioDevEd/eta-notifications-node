@@ -1,25 +1,25 @@
-var express = require('express');
-var router = express.Router();
-var Order = require('../models/order');
+const express = require('express');
+const router = express.Router();
+const Order = require('../models/order');
 
 // GET: /orders
-router.get('/', function(req, res, next) {
+router.get('/', function(_req, res) {
   Order.find().then(function(orders) {
     res.render('orders/index', {orders});
   });
 });
 
 // GET: /orders/4
-router.get('/:id/show', function(req, res, next) {
-  var id = req.params.id;
+router.get('/:id/show', function(req, res) {
+  const id = req.params.id;
   Order.findOne({_id: id}).then(function(order) {
     res.render('orders/show', {order: order});
   });
 });
 
 // POST: /orders/4/pickup
-router.post('/:orderId/pickup', function(req, res, next) {
-  var id = req.params.orderId;
+router.post('/:orderId/pickup', function(req, res) {
+  const id = req.params.orderId;
 
   Order.findOne({_id: id}).then(function(order) {
     order.status = 'Shipped';
@@ -39,32 +39,32 @@ router.post('/:orderId/pickup', function(req, res, next) {
 });
 
 // POST: /orders/4/deliver
-router.post('/:orderId/deliver', function(req, res, next) {
-  var id = req.params.orderId;
+router.post('/:orderId/deliver', function(req, res) {
+  const id = req.params.orderId;
 
   Order.findOne({_id: id})
     .then(function(order) {
       order.status = 'Delivered';
       order.notificationStatus = 'Queued';
-      var savePromise = order.save();
-      var smsPromise = order.sendSmsNotification('Your clothes have been delivered', getCallbackUri(req));
-
-      return Promise.all([savePromise, smsPromise]);
+      order.save()
+        .then(function() {
+          return order.sendSmsNotification('Your clothes have been delivered', getCallbackUri(req));
+        })
+        .then(function() {
+          res.redirect(`/orders/${id}/show`);
+        })
+        .catch(function(err) {
+          res.status(500).send(err.message);
+        });
     })
-    .then(function() {
-      res.redirect(`/orders/${id}/show`);
-    })
-    .catch(function(err) {
-      res.status(500).send(err.message);
-    });
 });
 
 
 // POST: /orders/4/status/update
-router.post('/:orderId/status/update', function(req, res, next) {
-  var id = req.params.orderId;
+router.post('/:orderId/status/update', function(req, res) {
+  const id = req.params.orderId;
 
-  var notificationStatus = req.body.MessageStatus;
+  const notificationStatus = req.body.MessageStatus;
 
   Order.findOne({_id: id})
     .then(function(order) {
@@ -80,8 +80,7 @@ router.post('/:orderId/status/update', function(req, res, next) {
 });
 
 function getCallbackUri(req) {
-  var host = req.headers.host;
-  return `http://${host}/orders/${req.params.orderId}/status/update`
+  return `http://${req.headers.host}/orders/${req.params.orderId}/status/update`;
 };
 
 module.exports = router;
