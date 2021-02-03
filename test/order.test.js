@@ -58,14 +58,15 @@ describe('order', function() {
   });
 
   describe('GET /order', function() {
-    it('list all orders', function() {
-      return agent
+    it('list all orders', function(done) {
+      agent
         .get('/orders')
         .expect(200)
         .expect(function(response) {
           expect(response.text).to.contain('Vincent Vega');
           expect(response.text).to.contain('Mia Wallace');
-        });
+        })
+        .end(done);
     });
   });
 
