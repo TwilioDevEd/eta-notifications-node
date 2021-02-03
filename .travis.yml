@@ -1,8 +1,10 @@
 language: node_js
 
 node_js:
-  - 'stable'
-  - '4.4'
+  - 'node'
+  - '14'
+  - '12'
+  - '10'
 
 services: mongodb
 

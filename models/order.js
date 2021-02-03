@@ -1,9 +1,9 @@
-var mongoose = require('mongoose');
-var config = require('../config');
-var twilio = require('twilio');
+const mongoose = require('mongoose');
+const config = require('../config');
+const twilio = require('twilio');
 
 
-var OrderSchema = new mongoose.Schema({
+const OrderSchema = new mongoose.Schema({
   customerName: String,
   customerPhoneNumber: String,
   status: {type: String, default: 'Ready'},
@@ -15,10 +15,9 @@ OrderSchema.methods.sendSmsNotification = function(message, statusCallback) {
     throw new Error('status callback is required to send notification.');
   }
 
-  var client = twilio(config.twilioAccountSid, config.twilioAuthToken);
-  var self = this;
-  var options = {
-    to: self.customerPhoneNumber,
+  const client = twilio(config.twilioAccountSid, config.twilioAuthToken);
+  const options = {
+    to: this.customerPhoneNumber,
     from: config.twilioPhoneNumber,
     body: message,
     statusCallback: statusCallback,
@@ -31,5 +30,5 @@ OrderSchema.methods.sendSmsNotification = function(message, statusCallback) {
 };
 
 
-var Order = mongoose.model('order', OrderSchema);
+const Order = mongoose.model('order', OrderSchema);
 module.exports = Order;

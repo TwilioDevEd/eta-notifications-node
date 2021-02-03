@@ -15,7 +15,7 @@ block content
       .col-xs-12.no-padding
         .list-group.list-special
           each order in orders
-            a.list-group-item.list-special-item(href="/orders/#{order.id}/show")
+            a.list-group-item.list-special-item(href=`/orders/${order.id}/show`)
               .row
                 .col-xs-8.text-uppercase
                   | !{order.customerName}

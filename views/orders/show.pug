@@ -4,7 +4,7 @@ extends ../layout
 block title
   | Orders
 
-block content  
+block content
   .container-fluid
     #order-index-header.row
       .col-md-4.col-xs-4
@@ -19,23 +19,23 @@ block content
       #location-image.col-md-5.col-xs-5.no-padding
     #show-info-row.row
       .col-xs-6.no-padding
-        | Status: 
+        | Status:
         span.index-status.text-uppercase !{order.status}
       .col-xs-6.no-padding
-        | Notification: 
+        | Notification:
         span.index-status.text-uppercase !{order.notificationStatus}
     .row.show-button-row
       .col-xs-12.text-center
-        form(method='POST', action="/orders/#{order.id}/pickup", accept-charset='UTF-8')
+        form(method='POST', action=`/orders/${order.id}/pickup`, accept-charset='UTF-8')
           button.btn.show-button(type='submit')
             .col-xs-3.text-center
               img#order-index-icon(src='/img/small-logo.png')
             .col-xs-6.text-center
               | PICK-UP
-          
+
     .row.show-button-row
       .col-xs-12.text-center
-        form(method='POST', action="/orders/#{order.id}/deliver", accept-charset='UTF-8')
+        form(method='POST', action=`/orders/${order.id}/deliver`, accept-charset='UTF-8')
           button.btn.show-button(type='submit')
             .col-xs-6.col-xs-offset-3.text-center
               | DELIVER
