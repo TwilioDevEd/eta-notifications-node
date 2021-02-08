@@ -3,13 +3,13 @@ db.dropDatabase();
 const orders = [
   {
     customerName: "Vincent Vega",
-    customerPhoneNumber: "+61490915488",
+    customerPhoneNumber: "+17654532001",
     status: "Ready",
     notificationStatus: "None",
   },
   {
     customerName: "Mia Wallace",
-    customerPhoneNumber: "+61490915488",
+    customerPhoneNumber: "+17654532002",
     status: "Ready",
     notificationStatus: "None",
   },
