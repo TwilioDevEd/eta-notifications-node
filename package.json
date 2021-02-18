@@ -38,7 +38,7 @@
     "express": "~4.17.1",
     "express-session": "^1.14.2",
     "mongo-migrate": "^2.0.2",
-    "mongoose": "^5.11.13",
+    "mongoose": "^5.11.17",
     "morgan": "~1.10.0",
     "pug": "^3.0.0",
     "serve-favicon": "^2.5.0",
