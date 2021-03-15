@@ -45,7 +45,7 @@
     "twilio": "^3.55.1"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
+    "chai": "^4.3.4",
     "cheerio": "^0.22.0",
     "mocha": "^8.2.1",
     "nock": "^13.0.6",
