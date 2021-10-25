@@ -1,7 +1,6 @@
 # ETA Notifications Node. Powered by Twilio - Node.js/Express
 
-[![Build
-Status](https://travis-ci.org/TwilioDevEd/eta-notifications-node.svg?branch=master)](https://travis-ci.org/TwilioDevEd/eta-notifications-node)
+[![Node.js CI](https://github.com/TwilioDevEd/eta-notifications-node/actions/workflows/node.js.yml/badge.svg)](https://github.com/TwilioDevEd/eta-notifications-node/actions/workflows/node.js.yml)
 
 
 ETA notifications implementation with Node.js/Express and Twilio.
